@@ -1,23 +1,38 @@
-server:
+ spring:
+  application:
+   name: user-service
+
+
+ server:
   port: 8081
 
-spring:
-  datasource:
-    url: jdbc:h2:mem:user-db
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: password
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: update
-  h2:
-    console:
-      enabled: true
 
-eureka:
+spring:
+ datasource:
+  url: jdbc:h2:mem:usersdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  driver-class-name: org.h2.Driver
+  username: sa
+  password:
+ h2:
+  console:
+   enabled: true
+   path: /h2-console
+
+
+ jwt:
+  secret: replace_this_with_a_strong_secret_for_dev
+  expirationMs: 3600000
+
+
+ eureka:
   client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    hostname: localhost
+   service-url:
+    defaultZone: http://localhost:8761/eureka/
+
+
+# swagger
+ springdoc:
+  api-docs:
+   path: /v3/api-docs
+  swagger-ui:
+   path: /swagger-ui.html
