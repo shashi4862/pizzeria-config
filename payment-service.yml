@@ -1,10 +1,14 @@
-
 server:
   port: 8085
 
 spring:
   datasource:
     url: jdbc:h2:mem:paymentdb
+    driver-class-name: org.h2.Driver
     username: sa
     password:
-    driver-class-name: org.h2.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
